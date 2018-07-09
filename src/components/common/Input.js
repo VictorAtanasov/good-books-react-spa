@@ -6,7 +6,7 @@ const Input = (props) => {
       type={props.type}
       placeholder={props.placeholder}
       onChange={props.change}
-      value={props.value}
+      // value={props.value}
       id={props.id}
       name={props.name}
     />

@@ -1,3 +1,5 @@
+/* global localStorage */
+
 import Auth from '../api/auth';
 import * as actionTypes from './actionTypes';
 
@@ -21,6 +23,30 @@ export function registerUser(user) {
 
 export function loginUser(user) {
   return (dispatch) => {
-    console.log(user);
+    return Auth.login(user)
+      .then((res) => {
+        if (res.success) {
+          localStorage.setItem('userToken', res.payload.token);
+          localStorage.setItem('userAvatar', res.payload.avatar);
+          localStorage.setItem('userEmail', res.payload.email);
+          localStorage.setItem('userUserId', res.payload.userId);
+          localStorage.setItem('userUsername', res.payload.username);
+          dispatch({
+            type: actionTypes.LOGIN_SUCCESS,
+            payload: res,
+          });
+        } else {
+          dispatch({
+            type: actionTypes.LOGIN_FAIL,
+            payload: res,
+          });
+        }
+      })
+      .catch((err) => {
+        dispatch({
+          type: actionTypes.LOGIN_FAIL,
+          payload: err,
+        });
+      });
   };
 }

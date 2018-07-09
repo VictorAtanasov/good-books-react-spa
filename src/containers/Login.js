@@ -5,13 +5,12 @@ import * as userActions from '../actions/userActions';
 import Input from '../components/common/Input';
 import userModel from '../models/user.model';
 
-class Register extends React.Component {
+class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       email: '',
       password: '',
-      username: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.formSubmit = this.formSubmit.bind(this);
@@ -29,11 +28,10 @@ class Register extends React.Component {
     const data = {
       email: this.state.email,
       password: this.state.password,
-      username: this.state.username,
     };
-    const dataValidation = userModel.registerValidation(data);
+    const dataValidation = userModel.loginValidation(data);
     if (dataValidation.isFormValid) {
-      this.props.registerUser(data)
+      this.props.loginUser(data)
         .then(() => {
           if (this.props.users.success) {
             this.setState({
@@ -60,7 +58,7 @@ class Register extends React.Component {
       <div>
         <div>
           <h2>
-            Register
+            Login
           </h2>
           <div>
             <form onSubmit={this.formSubmit}>
@@ -78,18 +76,6 @@ class Register extends React.Component {
               </div>
               <div>
                 <Input
-                  type="text"
-                  placeholder="username"
-                  name="username"
-                  value={this.state.username}
-                  change={ev => this.handleChange(ev)}
-                />
-                <p>
-                  {this.state.errors ? this.state.errors.username : null}
-                </p>
-              </div>
-              <div>
-                <Input
                   type="password"
                   placeholder="password"
                   name="password"
@@ -102,7 +88,7 @@ class Register extends React.Component {
               </div>
               <input
                 type="submit"
-                value="Register"
+                value="Login"
               />
             </form>
             <h2>
@@ -126,4 +112,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

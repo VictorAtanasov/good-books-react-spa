@@ -9,6 +9,7 @@ import './App.css';
 import Header from './components/Header';
 import Home from './components/Home';
 import Register from './containers/Register';
+import Login from './containers/Login';
 
 class App extends Component {
   render() {
@@ -18,7 +19,8 @@ class App extends Component {
           <Header />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/auth" component={Register} />
+            <Route path="/auth/register" component={Register} />
+            <Route path="/auth/login" component={Login} />
           </Switch>
         </div>
       </BrowserRouter>

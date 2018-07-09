@@ -9,8 +9,11 @@ export default class Header extends React.Component {
           Header
         </p>
         <div>
-          <Link to="/auth">
+          <Link to="/auth/register">
             Register
+          </Link>
+          <Link to="/auth/login">
+            Login
           </Link>
         </div>
       </div>
