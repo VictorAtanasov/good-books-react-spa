@@ -4,23 +4,22 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as userActions from './actions/userActions';
-import './App.css';
+import classes from './App.css';
 
 import Header from './components/Header';
 import Home from './components/Home';
-import Register from './containers/Register';
-import Login from './containers/Login';
+import Authentication from './containers/Authentication';
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
+        <div className={classes.App}>
           <Header />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/auth/register" component={Register} />
-            <Route path="/auth/login" component={Login} />
+            <Route path="/auth/register" render={props => <Authentication type="register" {...props} />} />
+            <Route path="/auth/login" render={props => <Authentication type="login" {...props} />} />
           </Switch>
         </div>
       </BrowserRouter>

@@ -47,3 +47,10 @@ export function loginUser(user) {
       });
   };
 }
+
+export function getUser() {
+  return () => {
+    const user = localStorage.getItem('user');
+    return user;
+  };
+}

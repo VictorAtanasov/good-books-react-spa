@@ -6,7 +6,7 @@ const getOptions = () => ({
   method: 'POST',
   mode: 'cors',
   headers: {
-    'Accept': 'application/json',
+    Accept: 'application/json',
     'Content-Type': 'application/json',
   },
 });
