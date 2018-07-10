@@ -54,3 +54,10 @@ export function getUser() {
     return user;
   };
 }
+
+export function logoutUser() {
+  return () => {
+    localStorage.removeItem('user');
+    return true;
+  };
+}

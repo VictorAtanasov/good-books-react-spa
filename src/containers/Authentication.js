@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 import * as userActions from '../actions/userActions';
 import Form from '../components/common/Form';
 import userModel from '../models/user.model';
@@ -150,6 +151,11 @@ class Authentication extends React.Component {
           errors={this.state.errors ? this.state.errors : null}
           formMessage={this.state.formMessage ? this.state.formMessage : null}
         />
+        <div>
+          <Link to="/auth/register">
+            Register
+          </Link>
+        </div>
       </div>
     );
   }
