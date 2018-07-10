@@ -26,11 +26,8 @@ export function loginUser(user) {
     return Auth.login(user)
       .then((res) => {
         if (res.success) {
-          localStorage.setItem('userToken', res.payload.token);
-          localStorage.setItem('userAvatar', res.payload.avatar);
-          localStorage.setItem('userEmail', res.payload.email);
-          localStorage.setItem('userUserId', res.payload.userId);
-          localStorage.setItem('userUsername', res.payload.username);
+          const data = JSON.stringify({ ...res.payload });
+          localStorage.setItem('user', data);
           dispatch({
             type: actionTypes.LOGIN_SUCCESS,
             payload: res,

@@ -37,6 +37,7 @@ class Login extends React.Component {
             this.setState({
               formMessage: this.props.users.message,
             });
+            this.props.history.push('/');
           } else {
             this.setState({
               errors: this.props.users.message.errors,
