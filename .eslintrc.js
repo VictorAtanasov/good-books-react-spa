@@ -7,6 +7,7 @@ module.exports = {
         "react/prop-types": "off",
         "arrow-body-style": "off",
         "react/no-array-index-key": "off",
+        "react/no-access-state-in-setstate": "off",
         //"quote-props": "off",
     }
 };

@@ -55,6 +55,16 @@ export function getUser() {
   };
 }
 
+// export function getUser() {
+//   return (dispatch) => {
+//     const user = localStorage.getItem('user');
+//     dispatch({
+//       type: actionTypes.GET_USER,
+//       payload: JSON.parse(user),
+//     });
+//   };
+// }
+
 export function logoutUser() {
   return () => {
     localStorage.removeItem('user');

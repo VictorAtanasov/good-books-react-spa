@@ -22,6 +22,11 @@ export default function userReducer(state = { success: false }, action) {
         success: false,
         ...action.payload,
       };
+    // case actionTypes.GET_USER:
+    //   return {
+    //     success: true,
+    //     ...action.payload,
+    //   };
     default:
       return state;
   }

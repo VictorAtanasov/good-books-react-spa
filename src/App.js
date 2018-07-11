@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { Switch, BrowserRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
+import './App.css';
 import * as userActions from './actions/userActions';
-import classes from './App.css';
 
 import Header from './components/Header';
 import Home from './components/Home';
@@ -15,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div className={classes.App}>
+        <div className="App">
           <Header
             getUser={this.props.getUser}
             logoutUser={this.props.logoutUser}

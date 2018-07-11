@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import * as userActions from '../actions/userActions';
-import Form from '../components/common/Form';
+import Form from '../components/forms/Form';
 import userModel from '../models/user.model';
 
 class Authentication extends React.Component {
@@ -54,6 +54,14 @@ class Authentication extends React.Component {
     this.handleRegistration = this.handleRegistration.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
   }
+
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps.type !== this.props.type) {
+  //     this.setState({
+  //       formMessage: '',
+  //     });
+  //   }
+  // }
 
   handleChange(ev) {
     const val = ev.target.value;
@@ -139,6 +147,7 @@ class Authentication extends React.Component {
             submit={this.handleRegistration}
             errors={this.state.errors ? this.state.errors : null}
             formMessage={this.state.formMessage ? this.state.formMessage : null}
+            buttonName="Register"
           />
         </div>
       );
@@ -150,6 +159,7 @@ class Authentication extends React.Component {
           submit={this.handleLogin}
           errors={this.state.errors ? this.state.errors : null}
           formMessage={this.state.formMessage ? this.state.formMessage : null}
+          buttonName="LogIn"
         />
         <div>
           <Link to="/auth/register">

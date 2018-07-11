@@ -1,35 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import classes from './Header.css';
 
 export default class Header extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      user: '',
-    };
-  }
 
-  componentDidMount() {
-    const storageUser = this.props.getUser();
-    this.setState({
-      user: JSON.parse(storageUser),
-    });
+    this.state = {};
 
     this.logout = this.logout.bind(this);
+    this.checkForUser = this.checkForUser.bind(this);
+  }
+
+  checkForUser() {
+    return JSON.parse(this.props.getUser());
   }
 
   logout() {
     this.props.logoutUser();
-    this.setState({
-      user: '',
-    });
+    this.setState(this.state);
   }
 
   render() {
-    if (this.state.user === '') {
+    const user = this.checkForUser();
+    if (!user) {
       return (
-        <div className={classes.Header}>
+        <div>
           <Link to="/">
             Home
           </Link>
@@ -40,7 +35,7 @@ export default class Header extends React.Component {
       );
     }
     return (
-      <div className={classes.Header}>
+      <div>
         <div>
           <Link to="/">
             Home
@@ -49,7 +44,7 @@ export default class Header extends React.Component {
             Log Out
           </button>
           <p>
-            {`Hello ${this.state.user.username}`}
+            {`Hello ${user.username}`}
           </p>
         </div>
       </div>
