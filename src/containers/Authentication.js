@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import * as userActions from '../actions/userActions';
 import Form from '../components/forms/Form';
 import userModel from '../models/user.model';
+import Loader from '../components/common/Loader';
 
 class Authentication extends React.Component {
   constructor(props) {
@@ -49,6 +50,7 @@ class Authentication extends React.Component {
           value: '',
         },
       },
+      loading: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleRegistration = this.handleRegistration.bind(this);
@@ -84,8 +86,14 @@ class Authentication extends React.Component {
     };
     const dataValidation = userModel.registerValidation(data);
     if (dataValidation.isFormValid) {
+      this.setState({
+        loading: true,
+      });
       this.props.registerUser(data)
         .then(() => {
+          this.setState({
+            loading: false,
+          });
           if (this.props.users.success) {
             this.setState({
               formMessage: this.props.users.message,
@@ -114,8 +122,14 @@ class Authentication extends React.Component {
     };
     const dataValidation = userModel.loginValidation(data);
     if (dataValidation.isFormValid) {
+      this.setState({
+        loading: true,
+      });
       this.props.loginUser(data)
         .then(() => {
+          this.setState({
+            loading: false,
+          });
           if (this.props.users.success) {
             this.setState({
               formMessage: this.props.users.message,
@@ -149,6 +163,7 @@ class Authentication extends React.Component {
             formMessage={this.state.formMessage ? this.state.formMessage : null}
             buttonName="Register"
           />
+          <Loader loading={this.state.loading} />
         </div>
       );
     }
@@ -161,6 +176,7 @@ class Authentication extends React.Component {
           formMessage={this.state.formMessage ? this.state.formMessage : null}
           buttonName="LogIn"
         />
+        <Loader loading={this.state.loading} />
         <div>
           <Link to="/auth/register">
             Register
