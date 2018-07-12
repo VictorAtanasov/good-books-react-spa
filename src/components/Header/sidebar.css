@@ -1,0 +1,34 @@
+.sidebar {
+  background: white;
+  height: 100%;
+  transition: 0.5s;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.sidebar p{
+  display: block;
+  transition: 0.5s;
+}
+
+.open {
+  width: 350px;
+}
+
+.close {
+  width: 0;
+}
+
+.arrow-wrapper {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.arrow-wrapper .fas {
+ font-size: 40px;
+}

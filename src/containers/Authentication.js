@@ -6,6 +6,7 @@ import * as userActions from '../actions/userActions';
 import Form from '../components/forms/Form';
 import userModel from '../models/user.model';
 import Loader from '../components/common/Loader';
+import './authentication.css';
 
 class Authentication extends React.Component {
   constructor(props) {
@@ -56,14 +57,6 @@ class Authentication extends React.Component {
     this.handleRegistration = this.handleRegistration.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
   }
-
-  // componentDidUpdate(prevProps) {
-  //   if (prevProps.type !== this.props.type) {
-  //     this.setState({
-  //       formMessage: '',
-  //     });
-  //   }
-  // }
 
   handleChange(ev) {
     const val = ev.target.value;
@@ -168,7 +161,7 @@ class Authentication extends React.Component {
       );
     }
     return (
-      <div>
+      <div className="test">
         <Form
           formFields={this.state.loginForm}
           submit={this.handleLogin}
