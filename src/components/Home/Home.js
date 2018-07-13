@@ -4,9 +4,10 @@ import './home.css';
 export default class Home extends React.Component {
   render() {
     return (
-      <p>
-        Home
-      </p>
+      <div className="home">
+        <div className="home-header" />
+        <div className="scroll" />
+      </div>
     );
   }
 }

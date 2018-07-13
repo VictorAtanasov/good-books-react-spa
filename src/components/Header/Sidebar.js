@@ -25,15 +25,17 @@ const Sidebar = (props) => {
 
   return (
     <div className={`sidebar pull-right ${props.open ? 'open' : 'close'}`}>
-      <div onClick={props.close} className="arrow-wrapper">
-        <i className="fas fa-long-arrow-alt-right" />
+      <div className="sidebar-elements-wrapper">
+        <div onClick={props.close} className="arrow-wrapper">
+          <i className="fas fa-long-arrow-alt-right" />
+        </div>
+        <div onClick={props.close}>
+          <Link to="/">
+            Home
+          </Link>
+        </div>
+        {ifUser(userData)}
       </div>
-      <div onClick={props.close}>
-        <Link to="/">
-          Home
-        </Link>
-      </div>
-      {ifUser(userData)}
     </div>
   );
 };

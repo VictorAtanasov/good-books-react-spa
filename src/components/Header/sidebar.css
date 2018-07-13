@@ -32,3 +32,7 @@
 .arrow-wrapper .fas {
  font-size: 40px;
 }
+
+.sidebar-elements-wrapper {
+  position: absolute;
+}
