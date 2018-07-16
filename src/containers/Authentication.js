@@ -148,7 +148,7 @@ class Authentication extends React.Component {
     const { type } = this.props;
     if (type === 'register') {
       return (
-        <div>
+        <div className="form-wrapper">
           <Form
             formFields={this.state.registrationForm}
             submit={this.handleRegistration}
@@ -161,7 +161,7 @@ class Authentication extends React.Component {
       );
     }
     return (
-      <div className="test">
+      <div className="form-wrapper">
         <Form
           formFields={this.state.loginForm}
           submit={this.handleLogin}

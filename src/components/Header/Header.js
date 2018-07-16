@@ -1,8 +1,8 @@
 import React from 'react';
-import Sidebar from './Sidebar';
 import { Link } from 'react-router-dom';
+import Sidebar from './Sidebar';
 import './header.css';
-import Logo from '../../media/logo.png';
+// import Logo from '../../media/logo3.png';
 
 export default class Header extends React.Component {
   constructor(props) {
@@ -40,7 +40,18 @@ export default class Header extends React.Component {
           <span>
             <i className="fas fa-search" />
           </span>
-          <img src={Logo} alt="logo" className="logo" />
+          <div className="header-links-wrapper">
+            <Link to="/">
+              Authors
+            </Link>
+            <Link to="/">
+              Books
+            </Link>
+            <Link to="/">
+              Categories
+            </Link>
+          </div>
+          {/* <img src={Logo} alt="logo" className="logo" /> */}
           <div
             className="menu-wrapper"
             onClick={this.sidebarActions}
@@ -48,17 +59,6 @@ export default class Header extends React.Component {
             <i className="fas fa-bars" />
           </div>
         </div>
-        {/* <div className="header-links-wrapper">
-          <Link to="/">
-            Authors
-          </Link>
-          <Link to="/">
-            Books
-          </Link>
-          <Link to="/">
-            Categpries
-          </Link>
-        </div> */}
         <Sidebar
           open={this.state.sidebarLeftOpen}
           close={this.sidebarActions}
