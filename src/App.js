@@ -21,8 +21,8 @@ class App extends Component {
           />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/auth/register" render={props => <Authentication type="register" {...props} />} />
-            <Route path="/auth/login" render={props => <Authentication type="login" {...props} />} />
+            <Route path="/auth/register" render={props => <Authentication type="registrationForm" {...props} />} />
+            <Route path="/auth/login" render={props => <Authentication type="loginForm" {...props} />} />
             <Route component={NotFound} />
           </Switch>
         </div>

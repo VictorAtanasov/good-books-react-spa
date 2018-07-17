@@ -7,6 +7,7 @@ import Form from '../components/forms/Form';
 import userModel from '../models/user.model';
 import Loader from '../components/common/Loader';
 import './authentication.css';
+import Logo from '../media/logo.png';
 
 class Authentication extends React.Component {
   constructor(props) {
@@ -62,10 +63,10 @@ class Authentication extends React.Component {
     const val = ev.target.value;
     const fieldName = ev.target.name;
     this.setState((prevState) => {
-      const newregistrationForm = { ...prevState.registrationForm };
-      newregistrationForm[fieldName].value = val;
+      const newForm = { ...prevState[this.props.type] };
+      newForm[fieldName].value = val;
       return {
-        registrationForm: newregistrationForm,
+        registrationForm: newForm,
       };
     });
   }
@@ -146,22 +147,22 @@ class Authentication extends React.Component {
 
   render() {
     const { type } = this.props;
-    if (type === 'register') {
-      return (
-        <div className="form-wrapper">
-          <Form
-            formFields={this.state.registrationForm}
-            submit={this.handleRegistration}
-            errors={this.state.errors ? this.state.errors : null}
-            formMessage={this.state.formMessage ? this.state.formMessage : null}
-            buttonName="Register"
-          />
-          <Loader loading={this.state.loading} />
-        </div>
+    let form = null;
+    let authMethod = null;
+    if (type === 'registrationForm') {
+      authMethod = 'login';
+      form = (
+        <Form
+          formFields={this.state.registrationForm}
+          submit={this.handleRegistration}
+          errors={this.state.errors ? this.state.errors : null}
+          formMessage={this.state.formMessage ? this.state.formMessage : null}
+          buttonName="Register"
+        />
       );
-    }
-    return (
-      <div className="form-wrapper">
+    } else {
+      authMethod = 'register';
+      form = (
         <Form
           formFields={this.state.loginForm}
           submit={this.handleLogin}
@@ -169,11 +170,23 @@ class Authentication extends React.Component {
           formMessage={this.state.formMessage ? this.state.formMessage : null}
           buttonName="LogIn"
         />
-        <Loader loading={this.state.loading} />
-        <div>
-          <Link to="/auth/register">
-            Register
-          </Link>
+      );
+    }
+    return (
+      <div className="auth-wrapepr">
+        {/* <div className="auth-page-logo">
+          <img src={Logo} alt="" />
+        </div> */}
+        <div className="form-wrapper">
+          <div className="form-left">
+            <img src={Logo} alt="" />
+            {form}
+            <Loader loading={this.state.loading} />
+            <Link to={`/auth/${authMethod}`}>
+              {authMethod}
+            </Link>
+          </div>
+          <div className="form-right" />
         </div>
       </div>
     );

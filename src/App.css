@@ -9,7 +9,8 @@ body {
 }
 
 #root {
-  background-color: #ebebe8;
+  /* background-color: #ebebe8; */
+  background-color: #E1F5FE;
 }
 
 #root::after {

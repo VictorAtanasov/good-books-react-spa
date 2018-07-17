@@ -1,0 +1,55 @@
+.input-default {
+  border: none;
+  border-bottom: 1px solid grey;
+}
+
+.input-default-wrapper {
+  position: relative;
+  margin: 16px;
+  width: 100%;
+}
+
+.input-label {
+  position: absolute;
+  transition: 200ms;
+}
+
+.input-default-wrapper::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 51%;
+  right: 51%;
+  background: #2098D1;
+  height: 2px;
+  transition-property: left, right;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-out;
+}
+
+.input-default-wrapper:hover .input-default {
+  border-bottom: 1px solid;
+}
+
+.input-default:focus {
+  outline: none;
+}
+
+.input-default-wrapper:focus-within:before{
+  left: 0;
+  right: 0;
+}
+
+.input-default-wrapper:focus-within .input-label {
+  transition: transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+  transform: translate(0, -15px) scale(0.80);
+  transform-origin: top left;
+  color: #2098D1;
+}
+
+.input-default-label-up {
+  transition: transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+  transform: translate(0, -15px) scale(0.80);
+  transform-origin: top left;
+  color: #000000;
+}

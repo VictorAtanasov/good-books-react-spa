@@ -1,4 +1,39 @@
-.form-wrapper {
+.auth-wrapepr {
   width: 100%;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-wrapper {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  overflow: hidden;
+  min-height: 500px;
+}
+
+.form-left, .form-right {
+  display: inline-block;
+  height: 500px;
+}
+
+.form-left {
+  background-color: #fff;
+  width: 35%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-right {
+  background-image: url('../media/home-page/2.jpg');
+  background-size: cover;
+  height: 500px;
+  width: 65%;
 }

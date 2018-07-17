@@ -7,7 +7,7 @@ const Sidebar = (props) => {
   const ifUser = (user) => {
     if (user) {
       return (
-        <div>
+        <div onClick={props.close}>
           <button type="button" onClick={props.logoutBtn}>
             Logout
           </button>
@@ -15,7 +15,7 @@ const Sidebar = (props) => {
       );
     }
     return (
-      <div>
+      <div onClick={props.close}>
         <Link to="/auth/login">
           <i className="far fa-user" />
         </Link>
