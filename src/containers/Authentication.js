@@ -8,55 +8,25 @@ import userModel from '../models/user.model';
 import Loader from '../components/common/Loader';
 import './authentication.css';
 import Logo from '../media/logo.png';
+import userFormData from '../models/user.form.model';
 
 class Authentication extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      registrationForm: {
-        email: {
-          type: 'text',
-          placeholder: 'email',
-          name: 'email',
-          change: ev => this.handleChange(ev),
-          value: '',
-        },
-        username: {
-          type: 'text',
-          placeholder: 'username',
-          name: 'username',
-          change: ev => this.handleChange(ev),
-          value: '',
-        },
-        password: {
-          type: 'password',
-          placeholder: 'password',
-          name: 'password',
-          change: ev => this.handleChange(ev),
-          value: '',
-        },
-      },
-      loginForm: {
-        email: {
-          type: 'text',
-          placeholder: 'email',
-          name: 'email',
-          change: ev => this.handleChange(ev),
-          value: '',
-        },
-        password: {
-          type: 'password',
-          placeholder: 'password',
-          name: 'password',
-          change: ev => this.handleChange(ev),
-          value: '',
-        },
-      },
-      loading: false,
+      ...userFormData,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleRegistration = this.handleRegistration.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.match.url !== this.props.match.url) {
+      this.setState({
+        ...userFormData,
+      });
+    }
   }
 
   handleChange(ev) {
@@ -158,6 +128,7 @@ class Authentication extends React.Component {
           errors={this.state.errors ? this.state.errors : null}
           formMessage={this.state.formMessage ? this.state.formMessage : null}
           buttonName="Register"
+          change={ev => this.handleChange(ev)}
         />
       );
     } else {
@@ -169,20 +140,18 @@ class Authentication extends React.Component {
           errors={this.state.errors ? this.state.errors : null}
           formMessage={this.state.formMessage ? this.state.formMessage : null}
           buttonName="LogIn"
+          change={ev => this.handleChange(ev)}
         />
       );
     }
     return (
       <div className="auth-wrapepr">
-        {/* <div className="auth-page-logo">
-          <img src={Logo} alt="" />
-        </div> */}
         <div className="form-wrapper">
           <div className="form-left">
             <img src={Logo} alt="" />
             {form}
             <Loader loading={this.state.loading} />
-            <Link to={`/auth/${authMethod}`}>
+            <Link to={`/auth/${authMethod}`} className="btn btn-text-default">
               {authMethod}
             </Link>
           </div>

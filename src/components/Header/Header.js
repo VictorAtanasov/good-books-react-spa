@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import './header.css';
-// import Logo from '../../media/logo3.png';
 
 export default class Header extends React.Component {
   constructor(props) {

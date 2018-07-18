@@ -1,0 +1,94 @@
+.btn {
+  border: none;
+  background-color: transparent;
+  padding: 8px 16px;
+  margin: 8px;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.btn-outline-default {
+  border: 1px solid rgba(0, 0, 0, 0.23);
+  color: #000000;
+}
+
+.btn-outline-primary {
+  border: 1px solid #2196f3;
+  color: #2196f3;
+}
+
+.btn-outline-danger {
+  border: 1px solid rgb(225, 0, 80);
+  color: rgb(225, 0, 80);
+}
+
+.btn-outline-default:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.btn-outline-primary:hover {
+  background-color: rgba(33, 150, 243, 0.08);
+}
+
+.btn-outline-danger:hover {
+  background-color: rgba(225, 0, 80, 0.08);
+}
+
+.btn-button-default {
+  color: #000000;
+  background-color: #e0e0e0;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+}
+
+.btn-button-primary {
+  color: #fff;
+  background-color: #2196f3;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+}
+
+.btn-button-danger {
+  color: #fff;
+  background-color: rgb(225, 0, 80);
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+}
+
+.btn-button-default:hover {
+  background-color: #d5d5d5;
+}
+
+.btn-button-primary:hover {
+  background-color: #1976d2;
+}
+
+.btn-button-danger:hover {
+  background-color: rgb(157, 0, 56);
+}
+
+.btn-text-default {
+  color: #000000;
+}
+
+.btn-text-primary {
+  color: #2196f3;
+}
+
+.btn-text-danger {
+  color: rgb(225, 0, 80);
+}
+
+.btn-text-default:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+
+.btn-text-primary:hover {
+  background-color: rgba(33, 150, 243, 0.08);
+}
+
+.btn-text-danger:hover {
+  background-color: rgba(225, 0, 80, 0.08);
+}

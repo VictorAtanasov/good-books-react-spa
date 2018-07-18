@@ -37,3 +37,7 @@
   height: 500px;
   width: 65%;
 }
+
+form .btn {
+  margin-left: 0
+}

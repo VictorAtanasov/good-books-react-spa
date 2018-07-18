@@ -1,40 +1,39 @@
-export const registrationForm = {
-  email: {
-    type: 'text',
-    placeholder: 'email',
-    name: 'email',
-    change: ev => this.handleChange(ev),
-    value: '',
+const data = {
+  registrationForm: {
+    email: {
+      type: 'text',
+      placeholder: 'email',
+      name: 'email',
+      value: '',
+    },
+    username: {
+      type: 'text',
+      placeholder: 'username',
+      name: 'username',
+      value: '',
+    },
+    password: {
+      type: 'password',
+      placeholder: 'password',
+      name: 'password',
+      value: '',
+    },
   },
-  username: {
-    type: 'text',
-    placeholder: 'username',
-    name: 'username',
-    change: ev => this.handleChange(ev),
-    value: '',
+  loginForm: {
+    email: {
+      type: 'text',
+      placeholder: 'email',
+      name: 'email',
+      value: '',
+    },
+    password: {
+      type: 'password',
+      placeholder: 'password',
+      name: 'password',
+      value: '',
+    },
   },
-  password: {
-    type: 'password',
-    placeholder: 'password',
-    name: 'password',
-    change: ev => this.handleChange(ev),
-    value: '',
-  },
+  loading: false,
 };
 
-export const loginForm = {
-  email: {
-    type: 'text',
-    placeholder: 'email',
-    name: 'email',
-    change: ev => this.handleChange(ev),
-    value: '',
-  },
-  password: {
-    type: 'password',
-    placeholder: 'password',
-    name: 'password',
-    change: ev => this.handleChange(ev),
-    value: '',
-  },
-};
+export default data;
