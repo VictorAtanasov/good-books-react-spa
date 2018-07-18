@@ -8,7 +8,9 @@ const Input = (props) => {
   }
   return (
     <div className="input-default-wrapper">
-      <label htmlFor={props.id} className={`input-label ${isValue}`}>
+      <label
+        className={`input-label ${isValue}`}
+        htmlFor={props.name}>
         {props.placeholder}
       </label>
       <input
@@ -17,6 +19,7 @@ const Input = (props) => {
         id={props.id}
         name={props.name}
         className="input-default"
+        value={props.value}
       />
     </div>
   );

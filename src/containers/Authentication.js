@@ -13,8 +13,12 @@ import userFormData from '../models/user.form.model';
 class Authentication extends React.Component {
   constructor(props) {
     super(props);
+    this.formData = JSON.parse(JSON.stringify(userFormData[this.props.type]));
     this.state = {
-      ...userFormData,
+      formFields: {
+        ...this.formData,
+      },
+      loading: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleRegistration = this.handleRegistration.bind(this);
@@ -23,8 +27,11 @@ class Authentication extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.match.url !== this.props.match.url) {
+      const newData = JSON.parse(JSON.stringify(userFormData[nextProps.type]));
       this.setState({
-        ...userFormData,
+        formFields: {
+          ...newData,
+        },
       });
     }
   }
@@ -33,10 +40,10 @@ class Authentication extends React.Component {
     const val = ev.target.value;
     const fieldName = ev.target.name;
     this.setState((prevState) => {
-      const newForm = { ...prevState[this.props.type] };
+      const newForm = { ...prevState.formFields };
       newForm[fieldName].value = val;
       return {
-        registrationForm: newForm,
+        formFields: newForm,
       };
     });
   }
@@ -44,9 +51,9 @@ class Authentication extends React.Component {
   handleRegistration(ev) {
     ev.preventDefault();
     const data = {
-      email: this.state.registrationForm.email.value,
-      password: this.state.registrationForm.password.value,
-      username: this.state.registrationForm.username.value,
+      email: this.state.formFields.email.value,
+      password: this.state.formFields.password.value,
+      username: this.state.formFields.username.value,
     };
     const dataValidation = userModel.registerValidation(data);
     if (dataValidation.isFormValid) {
@@ -81,8 +88,8 @@ class Authentication extends React.Component {
   handleLogin(ev) {
     ev.preventDefault();
     const data = {
-      email: this.state.registrationForm.email.value,
-      password: this.state.registrationForm.password.value,
+      email: this.state.formFields.email.value,
+      password: this.state.formFields.password.value,
     };
     const dataValidation = userModel.loginValidation(data);
     if (dataValidation.isFormValid) {
@@ -119,11 +126,13 @@ class Authentication extends React.Component {
     const { type } = this.props;
     let form = null;
     let authMethod = null;
+    let msg = null;
     if (type === 'registrationForm') {
       authMethod = 'login';
+      msg = 'Already have an account?';
       form = (
         <Form
-          formFields={this.state.registrationForm}
+          formFields={this.state.formFields}
           submit={this.handleRegistration}
           errors={this.state.errors ? this.state.errors : null}
           formMessage={this.state.formMessage ? this.state.formMessage : null}
@@ -133,9 +142,10 @@ class Authentication extends React.Component {
       );
     } else {
       authMethod = 'register';
+      msg = 'Don\'t have an account?';
       form = (
         <Form
-          formFields={this.state.loginForm}
+          formFields={this.state.formFields}
           submit={this.handleLogin}
           errors={this.state.errors ? this.state.errors : null}
           formMessage={this.state.formMessage ? this.state.formMessage : null}
@@ -151,9 +161,14 @@ class Authentication extends React.Component {
             <img src={Logo} alt="" />
             {form}
             <Loader loading={this.state.loading} />
-            <Link to={`/auth/${authMethod}`} className="btn btn-text-default">
-              {authMethod}
-            </Link>
+            <div className="form-left-footer">
+              <p>
+                {msg}
+              </p>
+              <Link to={`/auth/${authMethod}`} className="btn btn-text-default">
+                {`${authMethod} now`}
+              </Link>
+            </div>
           </div>
           <div className="form-right" />
         </div>

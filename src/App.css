@@ -13,7 +13,7 @@ body {
   background-color: #E1F5FE;
 }
 
-#root::after {
+/* #root::after {
   content: '';
   height: 50px;
   background-color: #fff;
@@ -22,7 +22,7 @@ body {
   left: 0;
   right: 0;
   width: 100%;
-}
+} */
 
 .pull-right {
   float: right;

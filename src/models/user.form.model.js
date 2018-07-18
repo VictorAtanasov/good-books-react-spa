@@ -33,7 +33,6 @@ const data = {
       value: '',
     },
   },
-  loading: false,
 };
 
 export default data;
