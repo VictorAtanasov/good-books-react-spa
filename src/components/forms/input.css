@@ -2,12 +2,12 @@
   border: none;
   border-bottom: 1px solid grey;
   font-size: 17px;
-  padding: 0 0 3px 0;
+  padding: 0 0 2px 0;
 }
 
 .input-default-wrapper {
   position: relative;
-  margin: 16px 16px 25px 0;
+  margin: 25px 16px 20px 0;
   width: 100%;
 }
 
@@ -55,4 +55,15 @@
   transform: translate(0, -20px) scale(0.80);
   transform-origin: top left;
   color: #000000;
+}
+
+.input-error {
+  color: rgb(183, 28, 28);
+  display: block;
+  font-size: 12px;
+  position: absolute;
+}
+
+.errors {
+  margin: 30px 16px 50px 0 !important;
 }

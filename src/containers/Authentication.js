@@ -2,13 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
+import { BounceLoader } from 'react-spinners';
 import * as userActions from '../actions/userActions';
 import Form from '../components/forms/Form';
 import userModel from '../models/user.model';
-import Loader from '../components/common/Loader';
 import './authentication.css';
 import Logo from '../media/logo.png';
 import userFormData from '../models/user.form.model';
+import Snackbar from '../components/common/snackbar/Snackbar';
 
 class Authentication extends React.Component {
   constructor(props) {
@@ -19,10 +20,12 @@ class Authentication extends React.Component {
         ...this.formData,
       },
       loading: false,
+      snackbarOpen: false,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleRegistration = this.handleRegistration.bind(this);
     this.handleLogin = this.handleLogin.bind(this);
+    this.closeSnackbar = this.closeSnackbar.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -74,12 +77,14 @@ class Authentication extends React.Component {
               errors: this.props.users.message.errors,
               formMessage: this.props.users.message.message ? this.props.users.message.message
                 : this.props.users.message,
+              snackbarOpen: true,
             });
           }
         });
     } else {
       this.setState({
         formMessage: dataValidation.message,
+        snackbarOpen: true,
       });
     }
     ev.target.reset();
@@ -111,15 +116,23 @@ class Authentication extends React.Component {
               errors: this.props.users.message.errors,
               formMessage: this.props.users.message.message ? this.props.users.message.message
                 : this.props.users.message,
+              snackbarOpen: true,
             });
           }
         });
     } else {
       this.setState({
         formMessage: dataValidation.message,
+        snackbarOpen: true,
       });
     }
     ev.target.reset();
+  }
+
+  closeSnackbar() {
+    this.setState({
+      snackbarOpen: false,
+    });
   }
 
   render() {
@@ -138,6 +151,7 @@ class Authentication extends React.Component {
           formMessage={this.state.formMessage ? this.state.formMessage : null}
           buttonName="Register"
           change={ev => this.handleChange(ev)}
+          loading={this.state.loading}
         />
       );
     } else {
@@ -151,16 +165,19 @@ class Authentication extends React.Component {
           formMessage={this.state.formMessage ? this.state.formMessage : null}
           buttonName="LogIn"
           change={ev => this.handleChange(ev)}
+          loading={this.state.loading}
         />
       );
     }
     return (
-      <div className="auth-wrapepr">
+      <div className="auth-wrapper" onClick={this.closeSnackbar}>
         <div className="form-wrapper">
           <div className="form-left">
             <img src={Logo} alt="" />
+            <div className="auth-loader">
+              <BounceLoader loading={this.state.loading} color="#1976D2" size={70} />
+            </div>
             {form}
-            <Loader loading={this.state.loading} />
             <div className="form-left-footer">
               <p>
                 {msg}
@@ -172,6 +189,12 @@ class Authentication extends React.Component {
           </div>
           <div className="form-right" />
         </div>
+        <Snackbar
+          message={this.state.formMessage}
+          open={this.state.snackbarOpen}
+          click={this.closeSnackbar}
+          styles={{ backgroundColor: '#fff', color: '#B71C1C' }}
+        />
       </div>
     );
   }
