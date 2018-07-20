@@ -35,6 +35,7 @@ class Authentication extends React.Component {
         formFields: {
           ...newData,
         },
+        errors: {},
       });
     }
   }
