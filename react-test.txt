@@ -1,0 +1,30 @@
+name -> alabala.test.js
+
+import React from 'react';
+import {configure, shallow} from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import ComponentName from './componentLocation';
+import ComponentChild from './ComponentChildLocation'
+
+configure({adapter: new Adapter()});
+
+describe('<ComponentName />', () => {
+  // If we want to test multiple test with one component can do:
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(<ComponentName />);
+  });
+  it('test description for the console...', () => {
+    wrapper.setProps({...})
+    expect(wrapper.find(ComponentChild)).toHaveLenght(2);
+  });
+
+  // ************* //
+
+  it('test description for the console...', () => {
+    const wrapper = shallow(<ComponentName props... />);
+    expect(wrapper.find(ComponentChild)).toHaveLenght(2);
+  });
+
+  // can add more "it" methods
+});
