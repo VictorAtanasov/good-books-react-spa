@@ -28,3 +28,27 @@ describe('<ComponentName />', () => {
 
   // can add more "it" methods
 });
+
+
+// Test redux
+import reducer
+import actionTypes
+
+describe('auth reducer', () => {
+  it('test case', () => {
+    expect(reducer(undefined, {})).toEqual({
+      token: null.
+      userId: null,
+      error: null,
+      loading: false,
+    }, {
+      type: actionType,
+      some data that reducer dispatchs
+    }).toEqual({
+      token: newData.
+      userId: newData,
+      error: newData,
+      loading: newData,
+    })
+  });
+});

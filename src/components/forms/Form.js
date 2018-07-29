@@ -7,7 +7,11 @@ const Form = (props) => {
   const inputs = data.map((val, i) => {
     return (
       <div key={i}>
-        <Input {...val} change={props.change} error={props.errors ? props.errors[val.name] : null} />
+        <Input
+          {...val}
+          change={props.change}
+          error={props.errors ? props.errors[val.name] : null}
+        />
       </div>
     );
   });

@@ -11,7 +11,7 @@ import Logo from '../media/logo.png';
 import userFormData from '../models/user.form.model';
 import Snackbar from '../components/common/snackbar/Snackbar';
 
-class Authentication extends React.Component {
+export class Authentication extends React.Component {
   constructor(props) {
     super(props);
     this.formData = JSON.parse(JSON.stringify(userFormData[this.props.type]));
