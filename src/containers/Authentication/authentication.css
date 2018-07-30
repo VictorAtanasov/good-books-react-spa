@@ -33,7 +33,7 @@
 }
 
 .form-right {
-  background-image: url('../media/home-page/2.jpg');
+  background-image: url('../../media/home-page/2.jpg');
   background-size: cover;
   height: 500px;
   width: 65%;

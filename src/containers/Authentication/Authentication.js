@@ -3,13 +3,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import { BounceLoader } from 'react-spinners';
-import * as userActions from '../actions/userActions';
-import Form from '../components/forms/Form';
-import userModel from '../models/user.model';
+import * as userActions from '../../actions/userActions';
+import Form from '../../components/forms/Form';
+import userModel from '../../models/user.model';
 import './authentication.css';
-import Logo from '../media/logo.png';
-import userFormData from '../models/user.form.model';
-import Snackbar from '../components/common/snackbar/Snackbar';
+import Logo from '../../media/logo.png';
+import userFormData from '../../models/user.form.model';
+import Snackbar from '../../components/common/snackbar/Snackbar';
 
 export class Authentication extends React.Component {
   constructor(props) {

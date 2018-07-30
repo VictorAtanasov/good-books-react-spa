@@ -7,7 +7,7 @@ import * as userActions from './actions/userActions';
 
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
-import Authentication from './containers/Authentication';
+import Authentication from './containers/Authentication/Authentication';
 import NotFound from './components/NotFound';
 
 class App extends Component {
